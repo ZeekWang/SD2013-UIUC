@@ -26,7 +26,8 @@ function loadData(url) {
            //console.log(d);
            data = d;
        },
-       async: false
+       async: false,
+       dataType: "text"
     });
   return data;
 }
