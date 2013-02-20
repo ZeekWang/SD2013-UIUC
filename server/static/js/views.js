@@ -52,7 +52,8 @@ var FloorplanView = BaseView.extend({
   el: 'div',
   initialize: function() {
     this.template = loadTemplate("/static/views/floorplan.html");
-    this.floorplanpaths = JSON.parse(loadData("/static/paths.json"));
+    var data = loadData("/static/paths.json")
+    this.floorplanpaths = data;
     this.lightControllers = new Array();
     this.selectedroom = null;
   },
@@ -162,17 +163,21 @@ var HomeControlView = Backbone.View.extend({
 var LightControlView = BaseView.extend({
   el: 'div',
   initialize: function(lights) {
-    this.template = loadTemplate("/static/views/lightcontrol.html");
+    this.templatewhite = loadTemplate("/static/views/lightcontrol.html");
     this.dragging = false;
+
+    //Now begins Dan's stringy code to demonstrate the color picker, this will be better implemented in the final ui
+    this.templatecolor = loadTemplate("/static/views/colorlightcontrol.html");            
   },
 
   route: function(part, remaining) {
+    console.log(window.Lights)
     if (part) {
       this.model = window.Lights.get(part);
       if (this.model) {
         this.listenTo(this.model, 'change', this.render);
       } else {
-        console.log("Light model not found", part);
+        //console.log("Light model not found", part);
       }
     }
     return {}; // no subviews (yet)
@@ -181,48 +186,102 @@ var LightControlView = BaseView.extend({
   updateslider: function() {
     var that = this;
 
-    this.$("#lightdimmer").slider({
-      orientation: "vertical",
-      range: "min",
-      min: 0,
-      max: this.model.get('id') == 'livingroom' ? 1000000000 : 100,
-      value: this.model.get('current'),
-      start: function(event, ui) {
-        that.dragging = true;
-      },
-      stop: function(event, ui) {
-        that.dragging = false;
-      },
-      slide: function(event, ui) {
-        console.log(ui.value);
+    if(this.model.get('id') == 'kitchen'){
+
+      this.$("#lightdimmer").slider({
+        orientation: "vertical",
+        range: "min",
+        min: 0,
+        max: 100,
+        value: that.model.get('current'),
+        start: function(event, ui) {
+          that.dragging = true;
+        },
+        stop: function(event, ui) {
+          that.dragging = false;
+        },
+        slide: function(event, ui) {
+          console.log(ui.value);
+          that.model.save({
+            current: ui.value
+          });
+        }
+      });
+
+      this.$("#toggleon").click(function() {
+        var lastvalue = that.model.get('last');
+        //console.log(lastvalue);
         that.model.save({
-          current: ui.value
+          last: null
         });
-      }
-    });
+        if (lastvalue != null) that.model.save({
+          current: lastvalue
+        });
+      });
 
-    this.$("#toggleon").click(function() {
-      var lastvalue = that.model.get('last');
-      console.log(lastvalue);
-      that.model.save({
-        last: null
+      this.$("#toggleoff").click(function() {
+        var currentvalue = that.model.get('current');
+        that.model.save({
+          current: 0
+        });
       });
-      if (lastvalue != null) that.model.save({
-        current: lastvalue
-      });
-    });
 
-    this.$("#toggleoff").click(function() {
-      var currentvalue = that.model.get('current');
-      that.model.save({
-        last: currentvalue
+    }else{
+
+      cp = ColorPicker(document.getElementById('colorslider'), document.getElementById('colorpicker'), 
+          function(hex, hsv, rgb, mousePicker, mouseSlide) {
+              currentColor = hex;
+              ColorPicker.positionIndicators(
+                  document.getElementById('colorslider-indicator'),
+                  document.getElementById('colorpicker-indicator'),
+                  mouseSlide, mousePicker
+              );
+
+              console.log(rgb)
+
+              var newval = rgbToLoxone(rgb);
+
+              console.log(newval)
+
+              if(that.dragging){
+                that.model.save({
+                  current:newval
+                });
+              }
+
+          }
+      );
+      
+      var oldval = loxoneToRgb(that.model.get('current'));
+      console.log(that.model.get('current'))
+      cp.setRgb(oldval);
+
+      $( "#toggleon" ).click(function() {
+          var lastvalue = that.model.get('last')
+          console.log(lastvalue)
+          that.model.save({ last: null});
+          if(lastvalue != null)
+              that.model.save({ current: lastvalue});
       });
-      that.model.save({
-        current: 0
+
+      $( "#toggleoff" ).click(function() {
+          var currentvalue = that.model.get('current')
+          that.model.save({ last: currentvalue});
+          that.model.save({ current: 0});
       });
-    });
+
+      $( "#colorchannel").hover(function() {
+          that.dragging = true;
+      }, function(){
+          that.dragging = false;
+      });
+
+    }
   },
   render: function() {
+
+    console.log(this.model)
+
     if (!this.model) {
       this.$el.text("No light selected");
       return;
@@ -230,7 +289,16 @@ var LightControlView = BaseView.extend({
     if (this.dragging) {
       return;
     }
-    console.log("Rendering light control", this.model);
+    
+    //console.log(this)
+    //Now begins Dan's stringy code to demonstrate the color picker, this will be better implemented in the final ui
+    if(this.model.get('id') == 'kitchen'){
+        this.template = this.templatewhite;
+    } else {
+        this.template = this.templatecolor ;           
+    }
+
+    //console.log("Rendering light control", this.model);
     var lightTemplate = this.template(this.model);
     this.$el.html(lightTemplate);
     this.updateslider();

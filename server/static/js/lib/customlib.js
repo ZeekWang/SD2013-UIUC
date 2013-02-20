@@ -53,3 +53,32 @@ var hexToRgb = function(hex) {
        b: parseInt(result[3], 16)
    } : null;
 }
+
+var loxoneToRgb = function(bigdisgustingnumber){
+  var logicalrepresentation = [];
+
+  logicalrepresentation.r = (bigdisgustingnumber %100) * 255;
+  logicalrepresentation.g = (Math.floor(bigdisgustingnumber/1000) %100) * 255;
+  logicalrepresentation.b = (Math.floor(bigdisgustingnumber/1000000) %100) * 255;
+
+  return logicalrepresentation;
+
+}
+
+var rgbToLoxone = function(logicalrepresentation){
+
+
+  var bigdisgustingnumber = 0;
+
+  bigdisgustingnumber += Math.floor(logicalrepresentation.b/255*100)*1000000
+
+  bigdisgustingnumber += Math.floor(logicalrepresentation.g/255*100)*1000
+
+  bigdisgustingnumber += Math.floor(logicalrepresentation.r/255*100)
+
+  return bigdisgustingnumber;
+
+}
+
+
+
