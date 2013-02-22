@@ -1,0 +1,292 @@
+@font-face{
+    font-family: "neou";
+    src: url("../images/neou-t.ttf");
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url("../images/lato.woff");
+}
+
+/*background: -webkit-gradient(linear, left top, left bottom, from(#AF3C3C), to(#2C0606)) no-repeat center center fixed;
+        -webkit-background-size: cover;
+*/
+*{
+    margin:0;
+    padding:0;  
+}
+
+html{ 
+    height: 800px;
+    width: 1380px;
+    position:relative;
+    font-family: "Lato";
+    color: whitesmoke;
+    -webkit-user-select: none; 
+    overflow: hidden;
+}
+
+body{
+	background: rgb(95, 94, 90);
+    background-image: url('/static/images/render2.png');
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+}
+
+h1{
+	font-size: 75px;
+}
+
+h2{
+	font-size: 30px;
+}
+
+.viewport{
+	height:100%;
+	width: 100%;
+
+}
+
+.background{
+	height:100%;
+	width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.sidebarwrapper{
+	float: left;
+	height: 100%;
+	width: 150px;
+}
+
+.dashboardwrapper{
+	float: right;
+	height: 800px;
+	width: 1180px;
+}
+
+/* Control Page CSS */
+.sidebar{
+	height: 100%;
+	width: 110px;
+    background: rgb(26, 26, 26);
+}
+
+.nav li{
+}
+
+.home-nav{
+	margin: 0 0 10px 25px;
+	width: 65px;
+}
+
+.icon-nav{
+	width: 105px;
+	height: 80px;
+	margin: 0 0 10px 5px;
+	list-style-type: none;
+	border-right-style: solid;
+	border-right-width: 5px;
+}
+
+.icon-wrapper{
+	padding: 10px 0 0 22px;
+	width: 55px;
+	height: 55px;
+}
+
+.icon-nav img{
+	width: inherit;
+	height: inherit;
+}
+
+.icon-nav-lights{
+	border-right-color:rgb(223, 144, 1);
+}
+
+.icon-nav-hvac{
+	border-right-color: rgb(173, 50, 50);
+}
+
+.icon-nav-pv{
+	border-right-color: rgb(206, 218, 77);
+}
+.icon-nav-power{
+	border-right-color: rgb(85, 160, 85);
+}
+.icon-nav-water{
+	border-right-color: rgb(84, 175, 226);
+}
+.icon-nav-opt{
+	border-right-color: rgb(150, 111, 150);
+}
+.icon-nav-sched{
+	border-right-color: rgb(58, 90, 58);
+}
+
+
+
+/* Status Page Css */
+.dashboard{
+	float: right;
+	margin: 2% 3.5% 0 0;
+	height: 90%;
+	width: 100%;
+}
+
+.home-status-wrapper{
+	height:100%;
+	width:100%;
+	opacity: 1;
+}
+
+.status-pane{
+	position: relative;
+	float: left;
+	border-bottom-style: solid;
+	border-width: 3.5px;
+}
+
+.status-pane > h2{
+	margin: 0 0 2px 10px;
+	position: absolute;
+	bottom: 0;
+}
+
+.status-box{
+	height: 100%;
+	background-color: rgba(128, 128, 128, 0.00);
+	padding: 0 0 0 5px;
+}
+
+.status-box .notdata{
+	color:whitesmoke;
+	opacity:1;
+}
+
+.status-box .data{
+	font-size: 75
+	px;
+}
+
+.status-box .unit{
+	font-size: 25px;
+}
+
+.header{
+	height: 15%;
+	text-align: center;
+}
+
+.toppanes{
+	height: 30%;
+	width: 100%;
+}
+
+.toppanes > div{
+	height: 100%;
+	width: 45%;
+	margin: 0 2% 2% 2%;
+}
+
+.toppanes .status-box{
+	width: 80%;
+	margin: 0 0 0 19%;
+}
+
+.middlepanes{
+	height: 25%;
+	width: 100%;
+}
+
+.middlepanes > div{
+	height: 100%;
+	width: 28%;
+	margin: 0 1% 2% 3%;
+}
+
+.middlepanes .status-box{
+	width: 65%;
+	margin: 0 0 0 34%;
+}
+
+.bottompanes{
+	height: 20%;
+	width: 100%;
+
+}
+
+.bottompanes > div{
+	height: 100%;
+	margin: 0 2% 0 2%;
+}
+
+.lights{
+	border-color: rgb(223, 144, 1);
+	color: rgb(223, 144, 1);
+}
+
+.hvac{
+	border-color: rgb(173, 50, 50);
+	color: rgb(173, 50, 50);
+}
+
+.pv{
+	border-color: rgb(206, 218, 77);
+	color: rgb(206, 218, 77);
+}
+
+.power{
+	border-color: rgb(85, 160, 85);
+	color: rgb(85, 160, 85);
+}
+
+.water{
+	border-color: rgb(84, 175, 226);
+	color: rgb(84, 175, 226);
+}
+
+.opt{
+	border-color: rgb(151, 3, 151);
+	color: rgb(151, 3, 151);
+	width: 65%;
+}
+
+.sched{
+	border-color: rgb(58, 90, 58);
+	background-color: rgb(58, 90, 58);
+	color: whitesmoke;
+	width: 25%;	
+}
+
+.tips{
+	color: whitesmoke;
+	height:100%;
+	width: 80%;
+	margin: 0 0 0 19%;
+}
+
+.tip-box{
+	background-color: rgba(128, 128, 128, 0.40);
+	width: 22%;
+	height: 100%;
+	display: inline;
+	list-style-type: none;
+	margin-left: 18px;
+	float:left;
+	font-size: 25px
+}
+
+.sched img{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 40%;
+	height: 50%;
+}
+
+
+
+
+

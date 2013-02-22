@@ -5,7 +5,7 @@ import gevent
 from autobahn.websocket import WebSocketClientFactory, WebSocketClientProtocol, connectWS
 import requests, random, hmac, hashlib, base64, json
 
-LOX_ADDR = '130.126.29.12'
+LOX_ADDR = '192.168.1.102'
 PING_TIME = 10
 
 light_mapping = [  
