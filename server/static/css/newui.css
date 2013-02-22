@@ -156,7 +156,7 @@ h2{
 
 .status-box{
 	height: 100%;
-	background-color: rgba(128, 128, 128, 0.00);
+	background-color: rgba(128, 128, 128, 0.40);
 	padding: 0 0 0 5px;
 }
 
@@ -166,8 +166,7 @@ h2{
 }
 
 .status-box .data{
-	font-size: 75
-	px;
+	font-size: 75px;
 }
 
 .status-box .unit{
