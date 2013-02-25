@@ -1,0 +1,61 @@
+/* Control Page CSS */
+#sidebar-wrapper{
+	position:relative;
+	float: left;
+	height: 100%;
+	background: rgb(26, 26, 26);
+	z-index: 1;
+}
+
+#sub-nav-wrapper{
+	position:relative;
+	float: left;
+	height: 100%;
+	width: 0;
+	z-index: -1;
+}
+
+#dashboard-wrapper{
+	float: left;
+	height: 100%;
+}
+
+.sidebar{
+	height: 100%;
+	width: 110px;
+}
+
+.home-nav{
+    margin: 0 20px 10px 25px;
+    width: 65px;
+}
+
+.icon-nav{
+	position: relative;
+	width: 105px;
+	height: 80px;
+	margin: 0 0 10px 5px;
+	list-style-type: none;
+	border-right-style: solid;
+	border-right-width: 5px;
+}
+
+.slider{
+	position:absolute;
+	right:0;
+    height: 100%;
+    width:0;
+}
+
+.icon-wrapper{
+	position:absolute;
+	float: left;
+	padding: 10px 0 0 22px;
+	width: 55px;
+	height: 55px;
+}
+
+.icon-nav img{
+	width: inherit;
+	height: inherit;
+}

@@ -1,8 +1,11 @@
 var cachedTemplates = {};
 function loadTemplate(url) {
+/*
   if (cachedTemplates[url]) {
     return cachedTemplates[url];
   }
+*/
+
   var text;
  
   $.ajax({

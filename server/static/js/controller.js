@@ -12,8 +12,11 @@ $(function() {
     displayPart: function(level, currentView, remainingPath) {
       remainingPath = remainingPath.slice();
       //console.log("Displaying", level, currentView, remainingPath);
+      console.log(currentView)
       var part = remainingPath.shift();
+      //console.log('routing')
       var subviews = currentView.route(part, remainingPath); // returns a dict
+      console.log(subviews)
       currentView.render(); // re-render parent view before attaching children
       var allCreatedViews = this.currentViews[level];
       for (var name in subviews) {
@@ -25,7 +28,8 @@ $(function() {
     },
     displayUrl: function(path) {
       //console.log("Displaying", path, this);
-      // split the path by "/"s, then recursively create the new views
+      // split the path by "/"s, then recursively create the new view
+
       var pathParts = path.split("/");
       // find the path difference
       // []
@@ -65,13 +69,14 @@ $(function() {
       }
       //console.log("Path parts", pathParts);
       this.currentPath = pathParts;
+      
     }
   });
 
   window.router = new Router();
 
   window.navigate = function(str, noTrigger) {
-    //console.log("Navigating to", str);
+    //console.log("Navigating to", str, noTrigger);
     router.navigate(str, {
       trigger: !noTrigger
     });
@@ -86,7 +91,7 @@ $(function() {
     //console.log("Waiting on", waitingOn);
     if (waitingOn == 0) {
       Backbone.history.start();
-      //console.log("Started router", router);
+       //console.log("Started router", router);
     }
   }
 

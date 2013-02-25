@@ -1,0 +1,28 @@
+<link href="/static/css/subnav.css" rel="stylesheet" type="text/css">
+ <style type="text/css">
+	.sub-sidebar{
+	    background-color: <%=this.data.color%> 
+	}
+</style>
+<div class='sub-sidebar-wrapper'>
+	<div class="sub-sidebar">
+		<ul class='sub-nav'>
+
+	<%
+	_.each(this.data.children, function(child){
+	%>
+
+		<li class="sub-nav-button <%=child.id%>">
+			<div class='text-wrapper'>
+				<h4><%=child.name%></h4>
+			</div>
+		</li>
+
+	<%
+	});
+	%>
+
+	</div>
+</div>
+<div id="dashboard-wrapper">
+</div>

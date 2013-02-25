@@ -1,0 +1,123 @@
+{
+	"lights": {
+		"id": "lights",
+		"name": "Lighting",
+		"color": "rgb(223, 144, 1)",
+		"children": [
+			{
+				"name":"Current",
+				"id":"current"
+			},
+			{
+				"name":"Schedule",
+				"id":"schedule"
+			},
+			{
+				"name":"History",
+				"id":"history"
+			}
+		]
+    },
+    "hvac": {
+    	"id": "hvac",
+		"name": "HVAC",
+		"color": "rgb(173, 50, 50)",
+		"children": [
+			{
+				"name":"Current",
+				"id":"current"
+			},
+			{
+				"name":"Schedule",
+				"id":"schedule"
+			},
+			{
+				"name":"History",
+				"id":"history"
+			}
+		]
+    },
+    "pv": {
+    	"id": "pv",
+		"name": "Generation",
+		"color": "rgb(206, 218, 77)",
+		"children": [
+			{
+				"name":"Current",
+				"id":"current"
+			},
+			{
+				"name":"History",
+				"id":"history"
+			}
+		]
+    },
+    "power": {
+    	"id": "power",
+		"name": "Consumption",
+		"color": "rgb(85, 160, 85)",
+		"children": [
+			{
+				"name":"Current",
+				"id":"current"
+			},
+			{
+				"name":"Devices",
+				"id":"devices"
+			},
+			{
+				"name":"History",
+				"id":"history"
+			}
+		]
+    },
+    "water": {
+    	"id": "water",
+		"name": "Water",
+		"color": "rgb(84, 175, 226)",
+		"children": [
+			{
+				"name":"Current",
+				"id":"current"
+			},
+			{
+				"name":"History",
+				"id":"history"
+			}
+		]
+    },
+    "opt": {
+    	"id": "opt",
+		"name": "Optimizer",
+		"color": "rgb(150, 111, 150)",
+		"children": [
+			{
+				"name":"Current",
+				"id":"current"
+			},
+			{
+				"name":"History",
+				"id":"history"
+			}
+		]
+    },
+    "sched": {
+    	"id": "sched",
+		"name": "Scheduling",
+		"color": "rgb(58, 90, 58)",
+		"children": [
+			{
+				"name":"Current",
+				"id":"current"
+			},
+			{
+				"name":"New",
+				"id":"new"
+			},
+			{
+				"name":"Auto",
+				"id":"auto"
+			}
+		]
+    }
+}

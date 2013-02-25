@@ -1,0 +1,36 @@
+/* Control Page CSS */
+#sub-nav-wrapper{
+	height: 100%;
+	width: 92%;
+}
+
+.sub-sidebar-wrapper{
+	float:left;
+	height:100%;
+	width: 225px;
+	margin-top: 77px;
+	margin-left: -250px;
+}
+
+.sub-sidebar{
+	height: 90%;
+}
+
+.sub-sidebar li:last-child{
+	border-bottom: 0px solid;
+}
+
+.sub-nav-button{
+	height: 100%;
+	width: 100%;
+	text-align: right;
+	margin-bottom: 1%;
+}
+
+.sub-nav-button:hover{
+	background-color: grey;
+}
+
+.sub-nav-button h4{
+	font-size: 50px;
+}
