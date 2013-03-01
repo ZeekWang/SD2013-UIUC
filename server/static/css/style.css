@@ -33,6 +33,8 @@ body{
     background-image: url('/static/images/render2.png');
     background-size: 100% 100%;
     background-repeat:no-repeat;
+    position:relative;
+    z-index: -10;
 }
 
 h1{
@@ -44,6 +46,9 @@ h2{
 }
 
 #viewport{
+    position:relative;
     height: 100%;
     width: 100%;
+    z-index: -10;
+
 }

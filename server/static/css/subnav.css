@@ -29,8 +29,17 @@
 
 .sub-nav-button:hover{
 	background-color: grey;
+	opacity: 0.5;
 }
 
 .sub-nav-button h4{
 	font-size: 50px;
+}
+
+#dashboard-wrapper{
+	float:right;
+	background-color: whitesmoke;
+	opacity: 0.5;
+	width:80%;
+	opacity:0;
 }

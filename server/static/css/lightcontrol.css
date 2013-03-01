@@ -1,0 +1,30 @@
+#dashboard-wrapper{
+	float: right;
+	background-color: rgba(245, 245, 245, 0);
+	width: 80%;
+	opacity: 0;
+}
+
+.floorplanwrapper{
+	height: 100%;
+	width: 100%;
+	margin-top: 2%;
+	margin-left: 5%;
+}
+
+#floorplanholder{
+	opacity:1;
+	height: 90%;
+	width: 90%;
+}
+
+.shadowwrapper{
+	bottom: 15%;
+	height: 10%;
+	width: 90%;
+}
+
+.shadowwrapper img{
+	height: 100%;
+	width: 100%;
+}

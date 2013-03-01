@@ -18,6 +18,7 @@
 #dashboard-wrapper{
 	float: left;
 	height: 100%;
+	opacity: 0;
 }
 
 .sidebar{

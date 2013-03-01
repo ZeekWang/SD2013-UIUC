@@ -12,12 +12,11 @@ $(function() {
     displayPart: function(level, currentView, remainingPath) {
       remainingPath = remainingPath.slice();
       //console.log("Displaying", level, currentView, remainingPath);
-      console.log(currentView)
       var part = remainingPath.shift();
-      //console.log('routing')
       var subviews = currentView.route(part, remainingPath); // returns a dict
-      console.log(subviews)
       currentView.render(); // re-render parent view before attaching children
+      currentView.trigger("assign");
+
       var allCreatedViews = this.currentViews[level];
       for (var name in subviews) {
         var subview = subviews[name];
@@ -48,6 +47,7 @@ $(function() {
         //console.log("Destroying view level", teardownIdx, this.currentPath[teardownIdx]);
         for (var viewIdx in this.currentViews[teardownIdx]) {
           var view = this.currentViews[teardownIdx][viewIdx];
+          view.trigger("dispose");
           view.dispose();
         }
       }

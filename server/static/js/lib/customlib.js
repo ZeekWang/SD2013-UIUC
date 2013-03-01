@@ -1,10 +1,25 @@
+function retrieveView(pane, subpane){
+  
+  var viewMap = {
+    'lightscurrent': LightControlView
+  }
+  
+  if (viewMap[pane+subpane]){
+    viewToBeReturned = new viewMap[pane+subpane]([pane,subpane]);
+  } else {
+    viewToBeReturned = new PageView([pane,subpane]);
+  }
+
+  return viewToBeReturned;
+}
+
+
 var cachedTemplates = {};
 function loadTemplate(url) {
-/*
+
   if (cachedTemplates[url]) {
     return cachedTemplates[url];
   }
-*/
 
   var text;
  
@@ -13,6 +28,9 @@ function loadTemplate(url) {
    success: function(t) {
      //console.log(t);
      text = t;
+   },
+   error: function() {
+       console.log('hello world')
    },
    async: false
   });
@@ -28,6 +46,9 @@ function loadData(url) {
        success: function(d) {
            //console.log(d);
            data = d;
+       },
+       error: function() {
+           return false;
        },
        async: false
     });
