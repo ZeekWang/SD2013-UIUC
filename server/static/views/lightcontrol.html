@@ -1,8 +1,30 @@
 <link href="/static/css/lightcontrol.css" rel="stylesheet" type="text/css">
-<div class='floorplanwrapper'>
-	<div id='floorplanholder'>
-	</div>
-	<div class='shadowwrapper'>
-		<img src='static/images/dropshadow.png'>
+<div class="shadow">
+	<div class="modal">
+		<div class="zonecontrolwrapper">
+			<h1><%= this.id%></h1>
+            <div class="singlechannel">
+                <div id="zoneon" class="lightbutton"><h3>ON</h3></div>
+                <div id="zonedimmer"></div>
+                <div id="zoneoff" class="lightbutton"><h3>OFF</h3></div>
+            </div>
+		</div>
+		<div class="lightswrapper">
+			<h2>Lights</h2>
+			<div class='lightlistwrapper'>
+				<ul class='lightlist'>
+					<% 
+                    
+                    _.each(this.lights, function(light) {
+                    %>
+                    <li id='<%=light.id%>' class='<%=light.type%>'>
+                    
+                    </li>
+                    <%
+                    });
+                    %>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>

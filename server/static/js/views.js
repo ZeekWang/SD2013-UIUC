@@ -29,37 +29,22 @@ var HomeView = BaseView.extend({
   },
   route: function(part, remaining) {
     console.log("HomeView routing to", part, remaining);
-    var mainview, headview;
+    var mainview, sideview;
     if (part == "control" || !part) {
       if (!part) {
         navigate("control", true); // don't trigger nav inside route
       }
       mainview = new FloorplanView();
-      headview = new HeaderView();
+      sideview = new LightControlView();
     }
     return {
-      ".body": mainview,
-      ".header": headview
+      "#floorplan": mainview,
+      "#controlwrapper": sideview
     };
   },
   render: function() {
     var renderedTemplate = this.template();
     this.$el.html(renderedTemplate);
-  }
-});
-
-var HeaderView = BaseView.extend({
-  el: "div",
-  initialize: function() {
-    this.template = loadTemplate("/static/views/header.html");
-    this.selected = undefined;
-  },
-  route: function(part, remaining) {
-    this.selected = part;
-    return {};
-  },
-  render: function() {
-    this.$el.html(this.template());
   }
 });
 
@@ -200,7 +185,7 @@ var LightControlView = BaseView.extend({
       orientation: "vertical",
       range: "min",
       min: 0,
-      max: this.model.get('id') == 'livingroom' ? 1000000000 : 100,
+      max: this.model.get('id') == 'livingroom' ? 100100100 : 100,
       value: this.model.get('current'),
       start: function(event, ui) {
         that.dragging = true;

@@ -1,0 +1,25 @@
+<link href="/static/css/light.css" rel="stylesheet" type="text/css">
+
+<div class='light'>
+    <div class='lightname'>
+    <%=this.model.id%>
+    </div>
+    <div class='lightcontrolwrapper'>
+        <div class='sliderholder'>
+        </div>
+    </div>
+</div>
+<% 
+if(this.model.get('type') == 'rgb'){
+%>
+	<style>
+		.sliderholder .ui-slider-range{
+		   	background: <%=this.colorhex%>;
+		}
+	</style>
+
+	<div class='hslslider'>
+	</div>
+<%
+}
+%>

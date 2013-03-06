@@ -23,7 +23,7 @@ html{
     font-family: "Lato";
     color: whitesmoke;
     -webkit-user-select: none; 
-    overflow: hidden;
+    overflow: scroll;
 }
 
 body{
@@ -37,6 +37,10 @@ body{
     z-index: -10;
 }
 
+div{
+    height: 100%;
+    width: 100%;
+}
 h1{
     font-size: 75px;
 }

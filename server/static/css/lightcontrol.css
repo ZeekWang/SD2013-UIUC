@@ -1,21 +1,120 @@
-.floorplanwrapper{
-	height: 100%;
-	width: 100%;
-	margin-top: -5%}
+.shadow{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
 
-#floorplanholder{
-	opacity:1;
+.shadow div{
+
+}
+
+.modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 8%;
+    margin: auto;
+    z-index:2;
+    padding: 20px;
+    width: 67%;
+    height: 0%;
+    background: rgba(0,0,0,0.8);
+    border-radius: 5px;
+    border: solid 1px;
+
+    box-shadow: 20px 20px 20px #000;
+     
+}
+
+.zonecontrolwrapper{
+    float:left;
+     height:100%;
+     width:30%;
+}
+
+.lightswrapper{
+    float:left;
+    height:100%;
+    width:70%;
+}
+
+.singlechannel{
+	padding: 5%;
+	width: 70%;
 	height: 90%;
+	margin-right: 0;
+	text-align: center;
+}
+.lightbutton{
+	position: relative;
 	width: 100%;
+	height: 12%;
+	text-align: center;
 }
 
-.shadowwrapper{
-	bottom: 15%;
-	height: 10%;
-	width: 100%;
+.lightbutton h3{
+	position: absolute;
+	bottom: 0;
+	color: whitesmoke;
+	padding: auto;
+
 }
 
-.shadowwrapper img{
-	height: 8%;
-	width: 100%;
+#zoneon{
+	background-color: rgba(206,218,77,1);
+
+}
+
+#zoneoff{
+	background-color: rgb(134, 134, 134);
+}
+
+#zonedimmer{
+	background: rgb(134, 134, 134);
+	height: 63%;
+	width: 100%%;
+}
+
+#zonedimmer .ui-slider-handle {
+    display:none;
+}
+
+#zonedimmer.ui-corner-all{
+   	border-radius: 0px;
+   	border: solid 0px;
+}
+
+#zonedimmer .ui-slider-range{
+   	background: rgba(206,218,77,1);
+}
+
+.lightlistwrapper{
+	height: 90%;
+	width: 90%;
+	margin: auto;
+	margin-top: 3%;
+}
+
+.lightlist{
+	list-style-type: none;
+	height: 100%;
+	width:100%;
+}
+
+.lightlist li{
+    font-size:30px;
+    margin-bottom: 2%;
+    position:relative; 
+}
+
+.analog,
+.digital{
+    height: 10%;
+}
+
+.rgb{
+    height: 20%;
 }
