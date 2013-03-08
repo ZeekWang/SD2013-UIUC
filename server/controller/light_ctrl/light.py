@@ -100,7 +100,7 @@ class light(object):
         green_scaled = str(int(self.scale_me(green, 0,255,0,100)))
         blue_scaled = str(int(self.scale_me(blue, 0,255,0,100)))
 
-        final_val = red_scaled.zfill(3)+green_scaled.zfill(3)+blue_scaled.zfill(3)
+        final_val = blue_scaled.zfill(3)+green_scaled.zfill(3)+red_scaled.zfill(3)
         return final_val
 
     def update_analog(self,value):
@@ -141,7 +141,7 @@ class light(object):
     def rgb_action_str(self,value):
         '''converts to appropriate value readable by the server'''
         int_val = self.hex_to_int(value)
-        return "jdev/sps/io/"+self.up_uuid+"/"+str(int_val)
+        return "jdev/sps/io/"+self.up_uuid+"/AI/"+str(int_val)
 
     def analog_action_str(self,value):
         value = float(value)
