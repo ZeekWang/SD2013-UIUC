@@ -184,8 +184,8 @@ var LightingView = PageView.extend({
     this.lighttemplate = loadTemplate("/static/views/lightspage.html");
     data = loadData("/static/paths.json");
     this.floorplanpaths = JSON.parse(data);
-    //this.collection = window.Lights;
-    this.collection = window.bullshit;
+    this.collection = window.Lights;
+    // this.collection = window.bullshit;
     //console.log('hey look here')
   },
   animateIn: function(){
