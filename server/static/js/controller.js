@@ -97,7 +97,7 @@ $(function() {
   };
 
   // Only fetch non-debug collections
-  var collections = [window.Lights];
+  var collections = [window.Lights, Windoor,HVAC,Temp];
   var waitingOn = collections.length;
   var start = function() {
     waitingOn = waitingOn - 1;

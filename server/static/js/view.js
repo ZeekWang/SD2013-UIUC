@@ -128,6 +128,7 @@ var HomeView = BaseView.extend({
 
 var PageView = BaseView.extend({
   el: 'div',
+  // data = {id: , color: }
   initialize: function(data) {
     //console.log(data);
     //console.log(this);
@@ -230,7 +231,7 @@ var WindoorView = PageView.extend({
     //TO DO add bullshit collection
     //this.collection = window.Blinds;
     this.collection = window.BsBlinds;
-    console.log(window.BsBlinds)
+    //console.log(window.BsBlinds)
 
   },
   animateIn: function(){
@@ -730,11 +731,17 @@ var OptView = PageView.extend({
   initialize: function(data) {
     PageView.prototype.initialize.apply(this, [data]);    
     this.opttemplate = loadTemplate("/static/views/optimizer.html");
+    console.log("Opt View Initialized");
 
     //BRYANT BUT YOU OPTIMIZER COLLECTION RIGHT IN HERE
-    this.collection = window.BsDevices;
-    this.collection._sortBy('value',true);
+    this.collection = window.Windoor;
+    //this.collection._sortBy('value',true);
+    // this.bindEvents();
+
   },
+  // bindEvents:function(){
+  //   this.collection.on("all",this.render);
+  // },
   animateIn: function(){
     PageView.prototype.animateIn.apply(this);
   },
@@ -742,7 +749,7 @@ var OptView = PageView.extend({
     
     console.log(this.collection)
 
-    table = new TableView({collection:this.collection});
+    table = new TableViewWindoor({collection:this.collection});
 
     return{
       '#optimizertabledebug': table
@@ -1111,6 +1118,59 @@ var TableView = BaseView.extend({
   },
   render: function() {
     var renderedTemplate = this.template({collection: this.collection});
+    this.$el.html(renderedTemplate);
+  }
+});
+
+var TableViewWindoor = BaseView.extend({
+  el: 'div',
+  initialize: function(data) {
+    this.template = loadTemplate("/static/views/table.html");
+    
+    this.collection = data.collection;
+  },
+  route: function(part) {
+    var that = this;
+
+    //pointers for this view
+    this.tableEntries = {};
+
+    //views to be returned
+    tableEntriesToRendered = {};
+
+    console.log(this.collection)
+
+    _.each(this.collection.models, function(model) {
+
+      tableentry = new TableViewEntryOpt(model);
+      tableEntriesToRendered['#'+model.id] = tableentry;
+      that.tableEntries[model.id] = {};
+      that.tableEntries[model.id].id = model.id;
+      that.tableEntries[model.id].view = tableentry;
+      that.tableEntries[model.id].model = model;
+
+    });
+
+    return tableEntriesToRendered;
+  },
+  render: function() {
+    var renderedTemplate = this.template({collection: this.collection});
+    this.$el.html(renderedTemplate);
+  }
+});
+
+var TableViewEntryOpt = BaseView.extend({
+  el: 'div',
+  initialize: function(data) {
+    this.template = loadTemplate("/static/views/optviewtable.html");
+    this.model = data;
+    // this.model.on("all",this.render);
+  },
+  route: function(part) {
+    return {};
+  },
+  render: function() {
+    var renderedTemplate = this.template({model:this.model});
     this.$el.html(renderedTemplate);
   }
 });

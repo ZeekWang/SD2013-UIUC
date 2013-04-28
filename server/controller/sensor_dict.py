@@ -9,18 +9,63 @@ _sensor_list = [
 		'mac_address':'mac-1',
 		'type':'temp',
 		'name':'room-1',
-		'freq':4,
+		'freq':0,
 		'meta_data':{
-			'location':'room-1'
+			'location':'room-1',
 		}
 	},
 	{
 		'mac_address':'mac-1',
+		'type':'pyra',
+		'name':'room-1',
+		'freq':1,
+		'meta_data':{
+			'location':'room-1'
+		}
+	},	
+	{
+		'mac_address':'mac-1',
 		'type':'humid',
+		'name':'room-1',
+		'freq':2,
+		'meta_data':{
+			'location':'room-1',
+		}
+	},
+	{
+		'mac_address':'mac-1',
+		'type':'co2',
+		'name':'room-1',
+		'freq':3,
+		'meta_data':{
+			'location':'room-1',
+		}
+	},	
+	{
+		'mac_address':'mac-1',
+		'type':'flow',
+		'name':'room-1',
+		'freq':4,
+		'meta_data':{
+			'location':'room-1',
+		}
+	},
+	{
+		'mac_address':'mac-1',
+		'type':'windoor',
 		'name':'room-1',
 		'freq':5,
 		'meta_data':{
-			'location':'room-1'
+			'location':'room-1',
+		}
+	},
+	{
+		'mac_address':'mac-2',
+		'type':'windoor',
+		'name':'room-2',
+		'freq':5,
+		'meta_data':{
+			'location':'room-1',
 		}
 	},
 	{
@@ -30,6 +75,15 @@ _sensor_list = [
 		'freq':5,
 		'meta_data':{
 			'location':'kitchen'
+		}
+	},
+	{
+		'mac_address':'mac-3',
+		'type':'temp',
+		'name':'outsidetemp',
+		'freq':5,
+		'meta_data':{
+			'location':'outdoor'
 		}
 	},
 	# {
@@ -45,7 +99,7 @@ _sensor_list = [
 ]
 
 sensor_list = dict();
-id_tracker = 0
+id_tracker = 1
 for each in _sensor_list:
 	hash_key = str(each['type'])+str(each['mac_address'])
 	if not sensor_list.has_key(hash_key):

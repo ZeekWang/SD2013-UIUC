@@ -85,9 +85,9 @@ var HVACModel = ModelWS.extend({
   defaults: function() {
     return {
       id: null,
-      room: null, //id = room
-      temperature: null,
-      humidity: null,
+      // room: null, //id = room
+      // temperature: null,
+      // humidity: null,
     }
   }
 });
@@ -136,3 +136,20 @@ var TemperatureModel = ModelWS.extend({
   }
 });
 
+var SensorModel = ModelWS.extend({
+  defaults: function(){
+    return{
+      id:null,
+    }
+  }
+});
+
+var WindoorModel = ModelWS.extend({
+  defaults: function(){
+    return{
+      id:null,
+      zone: null,
+      value: null,
+    }
+  }
+});

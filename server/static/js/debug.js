@@ -57,7 +57,7 @@ var sensorsView = {
 	bindEvents: function(){
 		Temp.on("all", sensorsView.render);
 		Pyra.on("all", sensorsView.render);
-		Humid.on("all", sensorsView.Rendered);
+		Humid.on("all", sensorsView.render);
 		CO2.on("all", sensorsView.render);
 		Flow.on("all", sensorsView.render);
 		Windoor.on("all", sensorsView.render);
@@ -67,7 +67,7 @@ var sensorsView = {
 		$('.main-sub-view#sensors').html(""); //clear the tab view
 		var sensor_list = [Temp, Pyra, Humid, CO2, Flow, Windoor];
 		_.each(sensor_list, sensorsView.renderSubSensor);
-		console.log("Sensors Rendered");
+		console.log("Sensors Rendered",a,b,c,d);
 	},
 	renderSubSensor: function(subSensorColl){
 		$('.main-sub-view#sensors').append("<div>--------------------</div><br/>");
@@ -105,7 +105,6 @@ var hvacView = {
 }
 var othersView = {
 	init: function(){
-		//bind all the events
 		console.log("Others View Initialized");
 	},
 	render: function(){

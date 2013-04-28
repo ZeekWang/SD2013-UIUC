@@ -4,13 +4,13 @@ var LightCollection = CollectionWS.extend({
   model: LightModel,
   url: '/light',
   getLightsByZone: function(zone) {
-  	lightsToBeReturned = {};
-  	_.each(this.models, function(model){
-  		if(model.get('zone') == zone){
-  			lightsToBeReturned[model.id] = model;
-  		}
-  	});
-  	return lightsToBeReturned;
+    lightsToBeReturned = {};
+    _.each(this.models, function(model){
+      if(model.get('zone') == zone){
+        lightsToBeReturned[model.id] = model;
+      }
+    });
+    return lightsToBeReturned;
   },
   zoneData: function(zone){
     var lightson = [];
@@ -164,6 +164,12 @@ var WaterCollection = CollectionWS.extend({
   }
 });
 
+var WindoorCollection = CollectionWS.extend({
+  model: WindoorModel,
+  url: '/windoor'
+});
 
-
-
+var TempCollection = CollectionWS.extend({
+  model: SensorModel,
+  url: '/temp'
+});
