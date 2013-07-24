@@ -63,6 +63,7 @@ var HomeView = BaseView.extend({
       'power': PowerView,
       'water': WaterView,
       'opt': OptView,
+      'camera': CameraView,
       'graphdata': GraphDataView
     }
 
@@ -535,6 +536,78 @@ var LightView = BaseView.extend({
         }
       });
     }
+  }
+});
+
+var CameraView = PageView.extend({
+  el: 'div',
+  initialize: function(data) {
+    PageView.prototype.initialize.apply(this, [data]);
+    this.watertemplate = loadTemplate("/static/views/camera.html");
+    this.collection = [];
+    this.collection[0] = window.Flow;
+    this.collection[0]._sortBy('val',true);
+  },
+  animateIn: function(){
+    PageView.prototype.animateIn.apply(this);
+  },
+  route: function(part) {
+    
+    var that = this;
+    
+    if (!part) {
+      navigate("water/today", false); // don't trigger nav inside route
+    }
+
+    consumptiondatabox = new DataBox({
+      id: 'Waterconsumption',
+      color: [84,175,226],
+      databoxcontent: 'table',
+      collection: this.collection[0],
+      subviews: {
+        table: {
+          id: 'table',
+          view: TableView,
+          args: {collection: this.collection[0], name: "name", value: "val", unit: "gal/min"}
+        },
+        graphic: {
+          id: 'graphic',
+          view: FloorPlanView,
+          args: {collection: this.collection[0]}
+        }
+      }
+    });
+
+    taskbar = new PageTaskBar({
+      color: [84,175,226],
+      collections:[
+        {
+          name:'Water',
+          color: [84,175,226],
+          collection: this.collection[0]
+        }
+      ],
+      range: part
+    }); 
+
+    taskbar.on('timeselect', function(time){
+      that.selecttime(time);
+    });
+
+    return{
+      '#consumptionwrapper': consumptiondatabox
+      ,'#taskbarwrapper': taskbar
+      //,'#greywaterwrapper': generationtdatabox
+    }
+
+  },
+  render: function(pane, subpane) {
+    PageView.prototype.render.apply(this);
+    var renderedTemplate = this.watertemplate();
+    this.$('#pagecontent').html(renderedTemplate);
+  },
+  selecttime: function(timeperiod) {
+    navigate('water/'+ timeperiod, false);
   }
 });
 

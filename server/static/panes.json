@@ -24,6 +24,11 @@
 		"name": "Water",
 		"color": [84, 175, 226]
     },
+    "camera": {
+        "id": "camera",
+        "name": "Camera",
+        "color": [252, 85, 101]
+    },
     "graphdata": {
     	"id": "graphdata",
 		"name": "Data",

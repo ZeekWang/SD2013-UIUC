@@ -10,7 +10,7 @@
 .pagetitle{
 	float: left;
 	margin-left: 15px;
-	width: 300px;
+	width: 200px;
 
 	overflow-x: hidden;
 	text-overflow: ellipsis;
@@ -25,7 +25,7 @@
 
 .topbar{
 	float:right;
-	width: 630px;
+	width: 720px;
 }
 
 .main-nav{
