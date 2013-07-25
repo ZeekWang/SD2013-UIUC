@@ -2,17 +2,34 @@
 <div class='left camera-overview'>
 	<% 
 	var i = 0;
-    _.each(srcs, function(src) {
+  _.each(srcs, function(src) {
     %>
-		<img class="monitor-img" cameraid=<%=i%> src=<%=src%>>
-    	<% i++ %>
+    <img class="monitor-img" cameraid=<%=i%> src=<%=src%>>
+    <% i++ %>
     <%});%>
+  </div>
+
+  <div id='camera-focus-wrapper' class='right'>
+   <div class='focus-img-wrapper'>
+    <img class='focus-img' cameraid=0 src=<%=srcs[0]%>>
+  </div>
+
+  <div class='controller-wrapper'>
+  </div>
 </div>
 
-<div id='camera-focus-wrapper' class='right'>
-	<div class='focus-img-wrapper'>
-		<img class='focus-img' cameraid=0 src=<%=srcs[0]%>>
-	</div>
-	<div class='controller-wrapper'>
-	</div>
-</div>
+<script type="text/javascript">
+  setInterval(function(){
+    var eles = $(".monitor-img");
+    <% id = 0;%>
+    for (var i = 0; i < eles.length; i++){
+      $(".monitor-img[cameraid=" + i + "]").attr("src", <%="'" + srcs[id] + "'"%>);
+      <% id++; %>
+    }
+  }, 50);
+
+  setInterval(function(){
+    var id = $(".focus-img").attr("cameraid");
+    $(".focus-img").attr("src", $(".monitor-img[cameraid=" + id + "]").attr("src"));
+  })
+</script>

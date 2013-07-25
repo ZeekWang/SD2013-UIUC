@@ -547,9 +547,9 @@ var CameraView = PageView.extend({
     this.cameras = JSON.parse(this.cameras);
     this.srcs = [];
     for (var i = 0; i < this.cameras.ips.length; i++){
-      // this.srcs.push("http://" + this.cameras.username + ":" + this.cameras.password +
-      //   "@" + this.cameras.ips[i] + "/tmpfs/auto.jpg");
-      this.srcs.push("../static/images/monitor" + i + ".jpg");
+      this.srcs.push("http://" + this.cameras.username + ":" + this.cameras.password +
+        "@" + this.cameras.ips[i] + "/tmpfs/auto.jpg");
+      // this.srcs.push("../static/images/monitor" + i + ".jpg");
     }
     // this.collection = [];
     // this.collection[0] = window.Flow;
