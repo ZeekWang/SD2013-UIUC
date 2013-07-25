@@ -42,13 +42,12 @@ var HomeView = BaseView.extend({
     this.template = loadTemplate("/static/views/nav.html");
     var data = loadData("/static/panes.json");
     this.panes = JSON.parse(data);
-    this.currpane = 'home'
+    this.currpane = 'home';
 
     this.dictionary = window.Dictionary;
     
   },
   route: function(part, remaining) {
-    
     if (!part) {
       navigate("home", false); // don't trigger nav inside route
       return;
@@ -543,71 +542,87 @@ var CameraView = PageView.extend({
   el: 'div',
   initialize: function(data) {
     PageView.prototype.initialize.apply(this, [data]);
-    this.watertemplate = loadTemplate("/static/views/camera.html");
-    this.collection = [];
-    this.collection[0] = window.Flow;
-    this.collection[0]._sortBy('val',true);
+    this.cameratemplate = loadTemplate("/static/views/camera.html");
+    this.cameras = loadData("/static/cameras.json");
+    this.cameras = JSON.parse(this.cameras);
+    this.srcs = [];
+    for (var i = 0; i < this.cameras.ips.length; i++){
+      // this.srcs.push("http://" + this.cameras.username + ":" + this.cameras.password +
+      //   "@" + this.cameras.ips[i] + "/tmpfs/auto.jpg");
+      this.srcs.push("../static/images/monitor" + i + ".jpg");
+    }
+    // this.collection = [];
+    // this.collection[0] = window.Flow;
+    // this.collection[0]._sortBy('val',true);
+  },
+  events: {
+    "click .monitor-img": "setFoucsImg"
+  },
+  setFoucsImg: function(click){
+    var cameraId = parseInt($(click.currentTarget).attr("cameraid"));
+    $(".focus-img").attr("src", this.srcs[cameraId]).attr("cameraid", cameraId);
   },
   animateIn: function(){
     PageView.prototype.animateIn.apply(this);
   },
   route: function(part) {
     
-    var that = this;
+    // var that = this;
     
-    if (!part) {
-      navigate("water/today", false); // don't trigger nav inside route
-    }
+    // if (!part) {
+    //   navigate("camera", false); // don't trigger nav inside route
+    // }
 
-    consumptiondatabox = new DataBox({
-      id: 'Waterconsumption',
-      color: [84,175,226],
-      databoxcontent: 'table',
-      collection: this.collection[0],
-      subviews: {
-        table: {
-          id: 'table',
-          view: TableView,
-          args: {collection: this.collection[0], name: "name", value: "val", unit: "gal/min"}
-        },
-        graphic: {
-          id: 'graphic',
-          view: FloorPlanView,
-          args: {collection: this.collection[0]}
-        }
-      }
-    });
 
-    taskbar = new PageTaskBar({
-      color: [84,175,226],
-      collections:[
-        {
-          name:'Water',
-          color: [84,175,226],
-          collection: this.collection[0]
-        }
-      ],
-      range: part
-    }); 
 
-    taskbar.on('timeselect', function(time){
-      that.selecttime(time);
-    });
+    // consumptiondatabox = new DataBox({
+    //   id: 'Waterconsumption',
+    //   color: [84,175,226],
+    //   databoxcontent: 'table',
+    //   collection: this.collection[0],
+    //   subviews: {
+    //     table: {
+    //       id: 'table',
+    //       view: TableView,
+    //       args: {collection: this.collection[0], name: "name", value: "val", unit: "gal/min"}
+    //     },
+    //     graphic: {
+    //       id: 'graphic',
+    //       view: FloorPlanView,
+    //       args: {collection: this.collection[0]}
+    //     }
+    //   }
+    // });
 
-    return{
-      '#consumptionwrapper': consumptiondatabox
-      ,'#taskbarwrapper': taskbar
-      //,'#greywaterwrapper': generationtdatabox
-    }
+    // taskbar = new PageTaskBar({
+    //   color: [84,175,226],
+    //   collections:[
+    //     {
+    //       name:'Water',
+    //       color: [84,175,226],
+    //       collection: this.collection[0]
+    //     }
+    //   ],
+    //   range: part
+    // }); 
+
+    // taskbar.on('timeselect', function(time){
+    //   that.selecttime(time);
+    // });
+
+    // return{
+    //   '#consumptionwrapper': consumptiondatabox
+    //   ,'#taskbarwrapper': taskbar
+    //   //,'#greywaterwrapper': generationtdatabox
+    // }
 
   },
   render: function(pane, subpane) {
     PageView.prototype.render.apply(this);
-    var renderedTemplate = this.watertemplate();
+    console.log(this.cameras);
+    console.log(this.cameras["username"])
+    var renderedTemplate = this.cameratemplate({"srcs": this.srcs});
     this.$('#pagecontent').html(renderedTemplate);
-  },
-  selecttime: function(timeperiod) {
-    navigate('water/'+ timeperiod, false);
   }
 });
 

@@ -1,0 +1,18 @@
+<link href="/static/css/camera.css" rel="stylesheet" type="text/css">
+<div class='left camera-overview'>
+	<% 
+	var i = 0;
+    _.each(srcs, function(src) {
+    %>
+		<img class="monitor-img" cameraid=<%=i%> src=<%=src%>>
+    	<% i++ %>
+    <%});%>
+</div>
+
+<div id='camera-focus-wrapper' class='right'>
+	<div class='focus-img-wrapper'>
+		<img class='focus-img' cameraid=0 src=<%=srcs[0]%>>
+	</div>
+	<div class='controller-wrapper'>
+	</div>
+</div>
