@@ -10,12 +10,20 @@
   </div>
 
   <div id='camera-focus-wrapper' class='right'>
-   <div class='focus-img-wrapper'>
-    <img class='focus-img' cameraid=0 src=<%=srcs[0]%>>
-  </div>
+    <div class='focus-img-wrapper'>
+      <img class='focus-img' cameraid=0 src=<%=srcs[0]%>>
+    </div>
+    <div class='controllers-wrapper'>
+      <%
+      console.log(controllers);
+      _.each(controllers, function(controllerName){
 
-  <div class='controller-wrapper'>
-  </div>
+      %>
+      <span class='controller' command='<%=controllerName%>'><%=controllerName%></span>
+      <% });%>
+      <form id="submit-command-form" method="get" target="submit-iframe"></form>
+      <iframe name="submit-iframe" width="0" height="0" style="display:none"></iframe>
+    </div>
 </div>
 
 <script type="text/javascript">
