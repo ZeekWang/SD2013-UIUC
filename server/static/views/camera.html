@@ -29,10 +29,9 @@
 <script type="text/javascript">
   setInterval(function(){
     var eles = $(".monitor-img");
-    <% id = 0;%>
+    
     for (var i = 0; i < eles.length; i++){
-      $(".monitor-img[cameraid=" + i + "]").attr("src", <%="'" + srcs[id] + "'"%>);
-      <% id++; %>
+      $(".monitor-img[cameraid=" + i + "]").attr("src", $(".monitor-img[cameraid=" + i + "]").attr("src"));
     }
   }, 50);
 
