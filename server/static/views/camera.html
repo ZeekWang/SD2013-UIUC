@@ -1,35 +1,42 @@
 <link href="/static/css/camera.css" rel="stylesheet" type="text/css">
-<div class='left camera-overview'>
-	<% 
-	var i = 0;
-  _.each(srcs, function(src) {
-    %>
-    <img class="monitor-img" cameraid=<%=i%> src=<%=src%>>
-    <% i++ %>
-    <%});%>
+
+<div id='camera-focus-wrapper' class='top'>
+  <div class='focus-img-wrapper'>
+    <img class='focus-img' cameraid=0 src=<%=srcs[0]%>>
   </div>
-
-  <div id='camera-focus-wrapper' class='right'>
-    <div class='focus-img-wrapper'>
-      <img class='focus-img' cameraid=0 src=<%=srcs[0]%>>
-    </div>
-    <div class='controllers-wrapper'>
-      <%
-      console.log(controllers);
-      _.each(controllers, function(controllerName){
-
+  <div class='controllers-wrapper'>
+    <div class='dir-contrs'>
+    <%
+    console.log(controllers);
+    _.each(controllers, function(controllerName){
       %>
-      <span class='controller' command='<%=controllerName%>'><%=controllerName%></span>
-      <% });%>
-      <form id="submit-command-form" method="get" target="submit-iframe"></form>
-      <iframe name="submit-iframe" width="0" height="0" style="display:none"></iframe>
+<!--     <span class='controller' command='<%=controllerName%>'><%=controllerName%></span> -->
+      <div class='controller direction dir-<%=controllerName%>'  command='<%=controllerName%>'></div>
+    <%});%>
     </div>
+      
+
+    <form id="submit-command-form" method="get" target="submit-iframe"></form>
+    <iframe name="submit-iframe" width="0" height="0" style="display:none"></iframe>
+
+  </div>
 </div>
+
+
+<div class='down camera-overview'>
+  <% 
+    var i = 0;
+    _.each(srcs, function(src) {
+  %>
+    <img class="monitor-img" cameraid=<%=i%> src=<%=src%>>
+  <% i++ %>
+  <%});%>
+</div>
+
 
 <script type="text/javascript">
   setInterval(function(){
     var eles = $(".monitor-img");
-    
     for (var i = 0; i < eles.length; i++){
       $(".monitor-img[cameraid=" + i + "]").attr("src", $(".monitor-img[cameraid=" + i + "]").attr("src"));
     }

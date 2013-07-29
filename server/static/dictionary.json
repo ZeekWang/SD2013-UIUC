@@ -39,6 +39,11 @@
     "zh": "用水量"
   },
   {
+    "id": "camera",
+    "en": "Camera",
+    "zh": "摄像头"
+  },
+  {
     "id": "opt",
     "en": "Optimizer",
     "zh": "提示"

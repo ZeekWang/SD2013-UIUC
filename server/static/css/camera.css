@@ -3,26 +3,84 @@
 	width:100%;
 }
 
-.left {
-	float:left;
-	width: 25%;
-	height: 100%;
-	overflow-y: scroll;
+.down {
+	/*float:left;*/
+	white-space: nowrap;
+	width: 90%;
+	height: 20%;
+	overflow-x: scroll;
+	overflow-y: hidden;
 	text-align: center;
 	-webkit-box-shadow: 0 0 45px #383838;
+	background-color: rgba(0,15,30,0.8);
+	border-top: 5px solid;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.right{
-	float:right;
-	width: 75%;
-	height: 100%;
+.top {
+
+	width: 90%;
+	/*height: 100%;*/
 	text-align: center;
+	/*margin-top: 100px;*/
+	margin: auto;
+
 }
+
 
 .monitor-img {
-	width: 95%;
+	height: 85%;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#camera-focus-wrapper {
+	position: relative;
 }
 
 .focus-img {
-	width: 90%;
+	width: 100%;
+}
+
+.controllers-wrapper{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+.direction {
+	width: 32px;
+	height: 32px;
+	background-image: url("../../static/images/newicons/directions.png");
+}
+
+.dir-up {
+	background-position: 0px 0px;
+	position: absolute;
+	bottom: 64px;
+	right: 32px;
+}
+
+.dir-down {
+	background-position: -32px 0px;
+	position: absolute;
+	bottom: 0px;
+	right: 32px;
+}
+
+.dir-left {
+	background-position: -64px 0px;
+	position: absolute;
+	right: 64px;
+	bottom: 32px;
+}
+
+.dir-right {
+	background-position: -96px 0px;
+	position: absolute;
+	bottom: 32px;
+	right: 0px;
 }
